@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import ContextProvider from "./context/ContextProvider";
+// import ContextProvider from "./context/ContextProvider";
 
 import {
   BrowserRouter as Router,
@@ -38,7 +38,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <ContextProvider>
+      {/* <ContextProvider> */}
         <Router>
           <Routes>
             <Route
@@ -87,7 +87,7 @@ function App() {
             />
           </Routes>
         </Router>
-      </ContextProvider>
+      {/* </ContextProvider> */}
     </div>
   );
 }

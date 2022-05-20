@@ -3,6 +3,7 @@ import Context from "../context/context";
 import { Link } from "react-router-dom";
 import UserInfo from "./UserInfo";
 import UserQuestions from "./UserQuestions";
+import Navbar from "./Navbar";
 
 const Dashboard = ({ setAuth }) => {
   const context = useContext(Context);
@@ -60,12 +61,16 @@ const Dashboard = ({ setAuth }) => {
   console.log(context.question);
   // console.log(context.userInfo)
   return (
-    <>
-      <h1>Dashboard</h1>
+    <div>
+          <Navbar />
+    <div className = "container">
+       <div class="row">
+    <div class="col">
       <UserInfo userInfo={context.userInfo} />
-      <UserQuestions />
-      <form onSubmit={postQuestion}>
-        <input
+    </div>
+    <div class="col">
+    <form onSubmit={postQuestion}>
+        <textarea className="form-control" rows= "3"
           onChange={(e) => onChange(e)}
           value={context.question}
           type="text"
@@ -74,10 +79,13 @@ const Dashboard = ({ setAuth }) => {
         />
         <button>Post</button>
       </form>
+      <UserQuestions />
+
+    </div>
+    </div>   
       <button onClick={(e) => logout(e)}>Logout</button>
-      <h2>{`Hello `}</h2>
-      <Link to="/browse">Browse</Link>
-    </>
+    </div>
+    </div>
   );
 };
 

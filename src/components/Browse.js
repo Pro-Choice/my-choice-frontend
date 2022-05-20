@@ -2,6 +2,7 @@ import { React, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Context from "../context/context";
 import Post from "./Post";
+import Navbar from "./Navbar";
 
 const Browse = () => {
   const context = useContext(Context);
@@ -22,7 +23,7 @@ const Browse = () => {
   };
 
   const userQuestions = context.allQuestions.map((element) => {
-    return <Post key={element.id} content={element.content} />;
+    return <Post  id = {element.id} key={element.id} content={element.content} />;
   });
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const Browse = () => {
 
   return (
     <>
+    <Navbar/>
       <h1>Browse</h1>
       <div>{userQuestions}</div>
       <Link to="/dashboard">Dashboard</Link>

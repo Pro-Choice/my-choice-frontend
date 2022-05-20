@@ -17,6 +17,8 @@ const ContextProvider = ({ children }) => {
 
   const [allQuestions, setAllQuestions] = useState([]);
 
+  const [answers, setAnswers] = useState([]);
+
   const [question, setQuestion] = useState("");
 
   const [newQuestion, setNewQuestion] = useState("")
@@ -37,7 +39,9 @@ const ContextProvider = ({ children }) => {
     allQuestions, 
     setAllQuestions,
     isEditing,
-    setIsEditing
+    setIsEditing,
+    answers,
+    setAnswers
   };
 
   return <Context.Provider value={state}>{children}</Context.Provider>;
