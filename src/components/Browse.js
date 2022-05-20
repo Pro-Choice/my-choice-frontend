@@ -7,7 +7,7 @@ const Browse = () => {
   const context = useContext(Context);
   const getAllQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:3000/browse", {
+      const response = await fetch("http://localhost:3001/browse", {
         method: "GET",
         headers: {
           token: localStorage.token,

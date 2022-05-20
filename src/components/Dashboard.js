@@ -3,13 +3,15 @@ import Context from "../context/context";
 import { Link } from "react-router-dom";
 import UserInfo from "./UserInfo";
 import UserQuestions from "./UserQuestions";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import Mapbox from './Mapbox';
 
 const Dashboard = ({ setAuth }) => {
   const context = useContext(Context);
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -26,7 +28,7 @@ const Dashboard = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { question: context.question };
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "POST",
         headers: {
           token: localStorage.token,
@@ -77,6 +79,17 @@ const Dashboard = ({ setAuth }) => {
       <button onClick={(e) => logout(e)}>Logout</button>
       <h2>{`Hello `}</h2>
       <Link to="/browse">Browse</Link>
+      <Mapbox />
+      <ul className='list'>List of states that Ban abortions
+        <li>Alabama</li>
+        <li>Arizona</li>
+        <li>Arkansas</li>
+        <li>Michigan</li>
+        <li>Mississippi</li>
+        <li>Oklahoma</li>
+        <li>West Virginia</li>
+        <li>Wisconsin</li>
+      </ul>
     </>
   );
 };

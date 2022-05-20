@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.map-container {
+  width: 590px;
+  height: 390px;
+  box-shadow: 5px 10px #888888;
+  margin: auto;
+  margin-bottom: 16px;
+  }
+   
+  .sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  width: 569px;
+  margin: auto;
+  border-radius: 4px;
+  }
+
+  .mapbar-container{
+      margin: auto;
+      width: 650px;
+      height: fit-content;
+  }
