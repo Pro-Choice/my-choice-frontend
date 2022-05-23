@@ -1,0 +1,9 @@
+#mapcontainer {
+    margin: 0;
+  }
+
+  #map {
+      margin: auto;
+    height: 700px;
+    width: 700px;
+  }

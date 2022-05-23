@@ -12,6 +12,7 @@ import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Map from "./pages/Map"
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,6 +42,7 @@ function App() {
       <ContextProvider>
         <Router>
           <Routes>
+          <Route path="/map" element={ <Map />} />
             <Route
               exact
               path="/login"

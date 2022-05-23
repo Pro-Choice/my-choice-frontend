@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import UserInfo from "./UserInfo";
 import UserQuestions from "./UserQuestions";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Mapbox from './Mapbox';
+// import Mapbox from './Mapbox';
 
 const Dashboard = ({ setAuth }) => {
   const context = useContext(Context);
@@ -79,7 +79,8 @@ const Dashboard = ({ setAuth }) => {
       <button onClick={(e) => logout(e)}>Logout</button>
       <h2>{`Hello `}</h2>
       <Link to="/browse">Browse</Link>
-      <Mapbox />
+      {/* <Mapbox /> */}
+
       <ul className='list'>List of states that Ban abortions
         <li>Alabama</li>
         <li>Arizona</li>
