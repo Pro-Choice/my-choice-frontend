@@ -35,7 +35,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -52,7 +52,7 @@ const Dashboard = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { question: context.question };
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "POST",
         headers: {
           token: localStorage.token,
