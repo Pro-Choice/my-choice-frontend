@@ -1,7 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Context from "../context/context";
 import React from "react";
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
 const UserInfo = (props) => {
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const context = useContext(Context);
   let { username, first_name, last_name, bio } = props.userInfo;
 
@@ -24,7 +48,7 @@ const UserInfo = (props) => {
       const { first_name, last_name, bio } = context.inputs;
 
       const body = { first_name, last_name, bio };
-      const response = await fetch("http://localhost:3001/dashboard", {
+      const response = await fetch("http://localhost:3000/dashboard", {
         method: "PUT",
         headers: {
           token: localStorage.token,
@@ -61,13 +85,22 @@ const UserInfo = (props) => {
               first_name ? first_name : ""
             } ${last_name ? last_name : ""}`}</p>
             <p className="text-muted font-size-sm">{bio ? bio : ""}</p>
-            <button
+
+            <Button 
+            onClick={handleOpen}
+              type="button"
+              className="btn btn-dark btn-sm">Edit Profile</Button>
+
+
+            {/* <button
               onClick={(e) => onClick(e)}
               type="button"
               className="btn btn-dark btn-sm"
             >
               Edit Profile
-            </button>
+            </button> */}
+
+            
             {context.isEditing === true && (
               <form onSubmit={onSubmitForm}>
                 <input
@@ -94,6 +127,39 @@ const UserInfo = (props) => {
                 <button>Submit</button>
               </form>
             )}
+        <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+        <form onSubmit={onSubmitForm}>
+                <input
+                  onChange={(e) => onChange(e)}
+                  value={context.first_name}
+                  type="text"
+                  name="first_name"
+                  placeholder="First name"
+                />
+                <input
+                  onChange={(e) => onChange(e)}
+                  value={context.last_name}
+                  type="text"
+                  name="last_name"
+                  placeholder="Last name"
+                />
+                <input
+                  onChange={(e) => onChange(e)}
+                  value={context.bio}
+                  type="text"
+                  name="bio"
+                  placeholder="Bio"
+                />
+                <button>Submit</button>
+              </form>
+        </Box>
+      </Modal>
           </div>
         </div>
       </div>
