@@ -48,7 +48,7 @@ const UserInfo = (props) => {
       const { first_name, last_name, bio } = context.inputs;
 
       const body = { first_name, last_name, bio };
-      const response = await fetch("http://localhost:3001/dashboard", {
+      const response = await fetch("http://localhost:3000/dashboard", {
         method: "PUT",
         headers: {
           token: localStorage.token,

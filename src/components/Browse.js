@@ -30,7 +30,7 @@ const Browse = ({ setAuth }) => {
   const context = useContext(Context);
   const getAllQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:3001/browse", {
+      const response = await fetch("http://localhost:3000/browse", {
         method: "GET",
         headers: {
           token: localStorage.token,
@@ -103,8 +103,8 @@ const Browse = ({ setAuth }) => {
           <List>
               <ListItem disablePadding>
                 <ListItemButton>
-                    <Link to="/browse">
-                      <ListItemText  primary="Browse" />
+                    <Link to="/map">
+                      <ListItemText  primary="Home" />
                     </Link> 
                 
                 </ListItemButton>

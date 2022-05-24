@@ -35,7 +35,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3001/dashboard", {
+      const response = await fetch("http://localhost:3000/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -52,7 +52,7 @@ const Dashboard = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { question: context.question };
-      const response = await fetch("http://localhost:3001/dashboard", {
+      const response = await fetch("http://localhost:3000/dashboard", {
         method: "POST",
         headers: {
           token: localStorage.token,
@@ -87,8 +87,14 @@ const Dashboard = ({ setAuth }) => {
   // console.log(context.userInfo)
   return (
     <>
+
+
     <Box sx={{ mt:7}}>
-      <UserInfo userInfo={context.userInfo} />
+
+    <Box sx={{ ml:80 }}>
+        <UserInfo userInfo={context.userInfo} />
+      </Box>
+    
       
       <div className='text1'>
         <TextField sx={{ width: 500, height: 100, ml:45}} className="text2"  id="outlined-search" label="Type here" type="text" onChange={(e) => onChange(e)} value={context.question} name="post"/>
@@ -98,6 +104,8 @@ const Dashboard = ({ setAuth }) => {
       <button onClick={(e) => logout(e)}>Logout</button>
       <h2>{`Hello `}</h2>
       <Link to="/browse">Browse</Link>
+
+      
       
     </Box>
 
@@ -111,6 +119,7 @@ const Dashboard = ({ setAuth }) => {
 
           <Button sx={{ml:140, bgcolor: 'white', color:"blue" }} variant="contained" onClick={(e) => logout(e)}> Logout</Button> 
 
+      
 
         </Toolbar>
           
@@ -137,8 +146,8 @@ const Dashboard = ({ setAuth }) => {
 
                <ListItem disablePadding>
                 <ListItemButton>
-                    <Link to="/home">
-                      <ListItemText  primary="home" />
+                    <Link to="/map">
+                      <ListItemText  primary="Home" />
                     </Link> 
                 
                 </ListItemButton>
@@ -149,7 +158,7 @@ const Dashboard = ({ setAuth }) => {
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            {['All mail'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -162,9 +171,7 @@ const Dashboard = ({ setAuth }) => {
           </List>
         </Box>
       </Drawer>
-      <div>
-        {/* <Mapbox /> */}
-      </div>
+      
     </Box>
 
 
