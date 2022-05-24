@@ -23,7 +23,11 @@ const ContextProvider = ({ children }) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
+  const [flag, setFlag] = useState(true)
+
   const state = {
+    flag,
+    setFlag,
     inputs,
     setInputs,
     userInfo,

@@ -35,7 +35,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -47,12 +47,16 @@ const Dashboard = ({ setAuth }) => {
       console.error(error);
     }
   };
+function mapNum(){
+  console.log(context.flag)
+}
+
 
   const postQuestion = async (e) => {
     e.preventDefault();
     try {
       const body = { question: context.question };
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "POST",
         headers: {
           token: localStorage.token,
@@ -71,6 +75,9 @@ const Dashboard = ({ setAuth }) => {
   // console.log(context.userQuestions)
   useEffect(() => {
     getUserInfo();
+    console.log(context.flag)
+    context.setFlag(false)
+    console.log(context.flag, "this work")
   }, [context.newQuestion], [context.userInfo]);
 
   const logout = (e) => {
@@ -103,7 +110,7 @@ const Dashboard = ({ setAuth }) => {
       <UserQuestions />
       <button onClick={(e) => logout(e)}>Logout</button>
       <h2>{`Hello `}</h2>
-      <Link to="/browse">Browse</Link>
+      <Link to="/browse" >Browse</Link>
 
       
       
@@ -145,9 +152,9 @@ const Dashboard = ({ setAuth }) => {
               </ListItem>
 
                <ListItem disablePadding>
-                <ListItemButton>
-                    <Link to="/map">
-                      <ListItemText  primary="Home" />
+                <ListItemButton onClick={mapNum} >
+                    <Link  to="/map">
+                      <ListItemText onClick={mapNum}  primary="Home" />
                     </Link> 
                 
                 </ListItemButton>

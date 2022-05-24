@@ -21,7 +21,7 @@ const Post = (props) => {
   const onClick = async (e) => {
       e.preventDefault();
       try {
-        const response = await fetch(`http://localhost:3000/dashboard/questions/${id}`, {
+        const response = await fetch(`http://localhost:3001/dashboard/questions/${id}`, {
             method: "DELETE",
             headers: {
               token: localStorage.token,
@@ -39,7 +39,7 @@ const Post = (props) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
