@@ -1,9 +1,44 @@
-#mapcontainer {
-    margin: 0;
-  }
+body {
+  margin: 0;
+}
 
-  #map {
-      margin: auto;
-    height: 700px;
-    width: 700px;
-  }
+#map {
+    margin: auto;
+  height: 700px;
+  width: 700px;
+}
+  .marker {
+background-image: url('../../public/mapbox-icon.png');
+background-size: cover;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+section:hover{
+background-color: yellow;
+}
+.mapboxgl-popup {
+max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+text-align: center;
+font-family: 'Open Sans', sans-serif;
+}
+
+#info {
+display: table;
+position: relative;
+margin: 0px auto;
+word-wrap: anywhere;
+white-space: pre-wrap;
+padding: 10px;
+border: none;
+border-radius: 3px;
+font-size: 12px;
+text-align: center;
+color: #222;
+background: #fff;
+}

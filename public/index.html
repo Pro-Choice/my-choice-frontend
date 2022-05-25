@@ -31,36 +31,101 @@
   
   console.log("hello")
   setTimeout(setupMap, 1200)
-  mapboxgl.accessToken =
-  "pk.eyJ1IjoiZGFtaWFuMTkiLCJhIjoiY2wzZGthNG51MDh4MjNjdGxpYmJ4Ym9rbSJ9.u-3HjjM7c0_JpbIcdqxx-Q"
+ 
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGFtaWFuMTkiLCJhIjoiY2wzZGthNG51MDh4MjNjdGxpYmJ4Ym9rbSJ9.u-3HjjM7c0_JpbIcdqxx-Q';
+function setupMap(){
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [-96, 37.8],
+  zoom: 3
 
-navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-  enableHighAccuracy: true
-})
-
-function successLocation(position) {
-  setupMap([position.coords.longitude, position.coords.latitude])
-}
-
-function errorLocation() {
-  setupMap([-100.57359,39.64519])
-}
-
-function setupMap(center) {
-  const map = new mapboxgl.Map({
-    container: "map",
-    style: "mapbox://styles/mapbox/streets-v11",
-    center: [-96.33287,39.46493],
-    zoom: 3
-  })
-
-  const nav = new mapboxgl.NavigationControl()
+  
+});
+map.on('mousemove', (e) => {
+document.getElementById('info').innerHTML =
+// `e.point` is the x, y coordinates of the `mousemove` event
+// relative to the top-left corner of the map.
+JSON.stringify(e.point) +
+'<br />' +
+// `e.lngLat` is the longitude, latitude geographical position of the event.
+JSON.stringify(e.lngLat.wrap());
+});
+const nav = new mapboxgl.NavigationControl()
   map.addControl(nav)
+  console.log(nav)
 
   var directions = new MapboxDirections({
     accessToken: mapboxgl.accessToken
   })
 
   map.addControl(directions, "top-left")
+const geojson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-84.34881,33.74195]
+      },
+      properties: {
+        title: 'Planned Parenthood',
+        description: 'Atlanta, G.A'
+      }
+    },
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-115.18665839578034,36.1588577634474]
+      },
+      properties: {
+        title: 'Planned Parenthood',
+        description: 'Las Vegas,NV'
+      }
+    },
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-90.30238783902274, 38.80652999999796]
+      },
+      properties: {
+        title: 'Planned Parenthood',
+        description: 'Florissant, MO'
+      }
+    },
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-76.89376,40.27092]
+      },
+      properties: {
+        title: 'Planned Parenthood',
+        description: 'Harrisburg, PA'
+      }
+    }
+  ]
+};
+// code from the next step will go here!
+for (const feature of geojson.features) {
+  // create a HTML element for each feature
+  const el = document.createElement('section');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+  .setLngLat(feature.geometry.coordinates)
+  .setPopup(
+    new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML(
+        `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+      )
+  )
+  .addTo(map);
+  
+}
 }
 </script>
