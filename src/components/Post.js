@@ -21,7 +21,7 @@ const Post = (props) => {
   const onClick = async (e) => {
       e.preventDefault();
       try {
-        const response = await fetch(`http://localhost:3001/dashboard/questions/${id}`, {
+        const response = await fetch(`http://localhost:3000/dashboard/questions/${id}`, {
             method: "DELETE",
             headers: {
               token: localStorage.token,
@@ -39,7 +39,7 @@ const Post = (props) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3001/dashboard", {
+      const response = await fetch("http://localhost:3000/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -67,11 +67,11 @@ const Post = (props) => {
       <Grid container spacing={2}>
         
           <img
-              className="rounded-circle"
+            className="rounded"
               src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
               width="65" height="65"
             />
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography gutterBottom variant="h6" component="div" sx={{ml:3}}>
           <h4>{context.userInfo.username}</h4>
           </Typography>
         </Grid>

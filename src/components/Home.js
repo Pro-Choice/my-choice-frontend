@@ -5,6 +5,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
+import Mapbox from './Mapbox';
 
 
 const Home = () => {
@@ -46,6 +47,8 @@ const Home = () => {
         </li>
       ))}
     </List>
+
+    <Mapbox/>
         
     </div>
   );
