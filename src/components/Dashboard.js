@@ -18,7 +18,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Mapbox from "./Mapbox";
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -58,7 +57,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -79,7 +78,7 @@ function mapNum(){
     e.preventDefault();
     try {
       const body = { question: context.question };
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch("http://localhost:3001/dashboard", {
         method: "POST",
         headers: {
           token: localStorage.token,
