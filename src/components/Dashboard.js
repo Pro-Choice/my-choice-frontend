@@ -70,6 +70,10 @@ const Dashboard = ({ setAuth }) => {
       console.error(error);
     }
   };
+function mapNum(){
+  console.log(context.flag)
+}
+
 
   const postQuestion = async (e) => {
     e.preventDefault();
@@ -94,6 +98,9 @@ const Dashboard = ({ setAuth }) => {
   // console.log(context.userQuestions)
   useEffect(() => {
     getUserInfo();
+    console.log(context.flag)
+    context.setFlag(false)
+    console.log(context.flag, "this work")
   }, [context.newQuestion], [context.userInfo]);
 
   const logout = (e) => {
@@ -149,7 +156,7 @@ const Dashboard = ({ setAuth }) => {
 
       <button onClick={(e) => logout(e)}>Logout</button>
       <h2>{`Hello `}</h2>
-      <Link to="/browse">Browse</Link>
+      <Link to="/browse" >Browse</Link>
 
       
       
@@ -191,9 +198,9 @@ const Dashboard = ({ setAuth }) => {
               </ListItem>
 
                <ListItem disablePadding>
-                <ListItemButton>
-                    <Link to="/home">
-                      <ListItemText  primary="Home" />
+                <ListItemButton onClick={mapNum} >
+                    <Link  to="/map">
+                      <ListItemText onClick={mapNum}  primary="Home" />
                     </Link> 
                 
                 </ListItemButton>
