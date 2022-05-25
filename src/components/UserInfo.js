@@ -7,6 +7,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -64,22 +68,16 @@ const UserInfo = (props) => {
     }
   };
   return (
-    // <div className = "user-info">
-    //     <h2>{username}</h2>
-    //     <h2>{first_name}</h2>
-    //     <h2>{last_name}</h2>
-    //     <h2>{bio}</h2>
-    // </div>
-    <div className="card">
-      <div className="card-body">
-        <div className="d-flex flex-column align-items-center text-center">
+    <Card >
+      <Box className="fixed-top">
+        <Box className="d-flex flex-column align-items-center text-center">
           <img
             src="https://www.freeiconspng.com/uploads/female-icon-11.jpg"
             alt="Admin"
             className="rounded-circle"
             width="150"
           />
-          <div className="mt-3">
+          <div className="mt-3 align-items-center text-center">
             <h4>{username}</h4>
             <p className="text-secondary mb-1">{`${
               first_name ? first_name : ""
@@ -89,19 +87,16 @@ const UserInfo = (props) => {
             <Button 
             onClick={handleOpen}
               type="button"
+              variant="contained"
               className="btn btn-dark btn-sm">Edit Profile</Button>
 
-
-            {/* <button
-              onClick={(e) => onClick(e)}
-              type="button"
-              className="btn btn-dark btn-sm"
+              <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
             >
-              Edit Profile
-            </button> */}
-
-            
-            {context.isEditing === true && (
+              <Box sx={style}>
               <form onSubmit={onSubmitForm}>
                 <input
                   onChange={(e) => onChange(e)}
@@ -126,44 +121,12 @@ const UserInfo = (props) => {
                 />
                 <button>Submit</button>
               </form>
-            )}
-        <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-        <form onSubmit={onSubmitForm}>
-                <input
-                  onChange={(e) => onChange(e)}
-                  value={context.first_name}
-                  type="text"
-                  name="first_name"
-                  placeholder="First name"
-                />
-                <input
-                  onChange={(e) => onChange(e)}
-                  value={context.last_name}
-                  type="text"
-                  name="last_name"
-                  placeholder="Last name"
-                />
-                <input
-                  onChange={(e) => onChange(e)}
-                  value={context.bio}
-                  type="text"
-                  name="bio"
-                  placeholder="Bio"
-                />
-                <button>Submit</button>
-              </form>
-        </Box>
-      </Modal>
+              </Box>
+            </Modal>
           </div>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Card>
   );
 };
 

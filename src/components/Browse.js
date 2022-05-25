@@ -68,8 +68,7 @@ const Browse = ({ setAuth }) => {
       
     
       {/* <button onClick={(e) => logout(e)}>Logout</button> */}
-      <h2>{`Hello `}</h2>
-      <Link to="/browse">Browse</Link>
+      
       
     </Box>
 
@@ -78,10 +77,10 @@ const Browse = ({ setAuth }) => {
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Browse
+          {context.userInfo.username}
           </Typography>
 
-          <Button sx={{ml:140, bgcolor: 'white', color:"blue" }} variant="contained" onClick={(e) => logout(e)}> Logout</Button> 
+          <Button sx={{ml:150, bgcolor: 'white', color:"blue" }} variant="contained" onClick={(e) => logout(e)}> Logout</Button> 
 
 
           {/* <Button sx={{ml:140, bgcolor: 'white', color:"blue" }} variant="contained" onClick={(e) => logout(e)}> Logout</Button>  */}
@@ -124,7 +123,7 @@ const Browse = ({ setAuth }) => {
           </List>
           <Divider />
           <List>
-            {['All mail'].map((text, index) => (
+            {['All messages'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -139,13 +138,17 @@ const Browse = ({ setAuth }) => {
         </Box>
       </Drawer>
       
-      
+
+    <Box>
 
       <Grid container spacing={2}>
-        <Grid item xs={8}>
+        
+        <Grid sx={{ mt:6, ml:8, width: 900 }}>
           <UserQuestions />
         </Grid>
       </Grid>
+
+    </Box>
 
 
      
