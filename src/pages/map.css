@@ -1,11 +1,18 @@
 body {
   margin: 0;
 }
-
+#map-header{
+text-align: center;
+}
+#mapcontainer{
+  padding-bottom: 20px;
+}
 #map {
     margin: auto;
   height: 700px;
   width: 700px;
+  box-shadow: 10px 10px 5px 5px lightblue;
+  border: 0.1px solid black;
 }
   .marker {
 background-image: url('../../public/mapbox-icon.png');
@@ -42,3 +49,5 @@ text-align: center;
 color: #222;
 background: #fff;
 }
+
+/* ====================================================================================== */

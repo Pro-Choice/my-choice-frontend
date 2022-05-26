@@ -18,9 +18,8 @@ function reloadPage() {
 
         return (
   <div>
-    <h1>Typed in the adress and find directions to the clinic</h1>
-      <button onLoad={reloadPage()} > hello</button>
-            <div id = "mapcontainer">
+    <h1 id ="map-header">click on a marker for the address of the clinic or search the address</h1>
+            <div id= "mapcontainer" onLoad={reloadPage()} >
              <div id='map'></div>
              </div>
   </div>
